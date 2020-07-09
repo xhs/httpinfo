@@ -14,6 +14,7 @@ func main() {
 	app.Get("/ip", func(ctx *fiber.Ctx) {
 		if ctx.Get("X-Forwarded-For") != "" && ctx.Query("x-forwarded-for") != "false" {
 			ctx.SendString(ctx.Get("X-Forwarded-For"))
+			return
 		}
 
 		ctx.SendString(ctx.IP())
